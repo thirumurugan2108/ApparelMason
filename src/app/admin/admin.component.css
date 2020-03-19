@@ -1,0 +1,39 @@
+/* .example-card {
+    margin: 0 30px;
+    max-width: 200px;
+    min-width: 150px;
+    }
+     */
+    mat-card-content{
+      line-height: 1.4;
+      letter-spacing: 1px;
+    }
+  
+    .container{
+    display: flex;
+    justify-content: space-around;
+    flex-wrap: wrap;
+    }
+  
+    .example-card:hover {
+      /* top: -3px; */
+      box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+      cursor: pointer;
+    }
+
+    .post-container{
+      width: 70%;
+      margin: auto;
+  }
+
+  .mat-radio-button ~ .mat-radio-button {
+    margin-left: 16px;
+  }
+
+  button[type='submit']{
+    margin: 5px;
+  }
+
+  img{
+    max-height: 350px;
+  }

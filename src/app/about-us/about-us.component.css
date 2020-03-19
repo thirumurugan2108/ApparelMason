@@ -1,0 +1,35 @@
+.author-container {
+    flex-direction: column;
+    display: flex;
+    align-items: center;
+}
+
+.text-box {
+    text-align: center;
+}
+
+.img-writer {
+    width: 300px;
+    border-radius: 50%;
+    max-width: 400px;
+    height: 300px;
+    display: block;
+    object-fit: cover;
+}
+
+.deg {
+    font-size: 17px;
+    font-weight: bold;
+    color: rgb(12, 9, 6);
+    margin: 0 0 20px;
+}
+
+.social-holder {
+    margin: auto;
+    width: 300px;
+}
+
+.social {
+    display: flex;
+    justify-content: space-around;
+}

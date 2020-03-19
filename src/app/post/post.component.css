@@ -1,0 +1,24 @@
+.post-container{
+    width: 95%;
+    /* margin: 55px auto; */
+    overflow: visible;
+    position: relative;
+}
+
+p img{
+    /* display: block !important; */
+    /* width: 100% !important; */
+    height: auto !important;
+    /* height: 50%; */
+    max-width: 100%;
+}
+
+@media only screen and (max-width: 600px) {
+ span{
+   font-size:  1.4em  !important;
+}
+
+.h1 span{
+    font-size:  36px !important;
+ } 
+}

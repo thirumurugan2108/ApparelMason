@@ -1,0 +1,126 @@
+<div class="row">
+  <form class="col-md-4" [formGroup]="contactForm" (ngSubmit)="savePost()" style="margin: 3.5rem 10rem;">
+    <button class="btn btn-primary" (click)="switchCategory()">Switch to
+      {{!isNewCategory?'New Category':'Existing Category'}}</button>
+    <div class="form-group" *ngIf="!isNewCategory">
+      <label>Category: </label>
+      <mat-form-field >
+        <mat-label>Select Category</mat-label>
+        <mat-select formControlName="CATEGORY" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let animal of (categoryList )" [value]="animal">
+            {{animal}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="category.hasError('required')">Please choose a Category</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="form-group" *ngIf="isNewCategory">
+      <label for="exampleInputEmail1">New Category:</label>
+      <input type="text" class="form-control" formControlName="CATEGORY" id="exampleInputEmail1" 
+        placeholder="Enter Category" >
+      <small class="form-text text-muted">Please enter the category for this post.</small>
+    </div>
+
+    <button type="submit" class="btn btn-primary" (click)="switchSubCategory()">Switch to
+      {{!isNewSubCategory?'New SubCategory':'Existing SubCategory'}}</button>
+    <div class="form-group" *ngIf="!isNewSubCategory">
+      <label>SubCategory: </label>
+      <mat-form-field>
+        <mat-label>Select SubCategory</mat-label>
+        <mat-select formControlName="SUBCATEGORY" >
+          <mat-option>--</mat-option>
+          <mat-option *ngFor="let subCategoryItem of (SUBCATEGORYLIST)" [value]="subCategoryItem">
+            {{subCategoryItem}}
+          </mat-option>
+        </mat-select>
+        <!-- <mat-error *ngIf="subCategory.hasError('required')">Please choose a subCategory</mat-error> -->
+      </mat-form-field>
+    </div>
+    <div class="form-group" *ngIf="isNewSubCategory">
+      <label for="subCategoryInput">New SubCategory:</label>
+      <input type="text" class="form-control" formControlName="SUBCATEGORY" id="subCategoryInput"
+        placeholder="Enter SubCategory">
+      <small class="form-text text-muted">Please enter the Subcategory for this post.</small>
+    </div>
+
+    <div class="form-group">
+      <label>Title:</label>
+      <input type="text" formControlName="TITLE" class="form-control"  placeholder="TITLE"/>
+    </div>
+    <div class="form-group">
+      <label>ImagePath:</label>
+      <!-- <input type="text" class="form-control"  placeholder="imagePath" #imgsrc> -->
+      <input type="file"  accept="image/*" id="previewPhoto"
+        (change)="handleInputChange($event)">
+      <!-- <input type="file" (change)="uploadFile($event)"> -->
+    </div>
+    <button  class="btn btn-primary" *ngIf="!isContentEdiatable" (click)="getContentForEdit()">EditContent</button>
+    <div class="form-group" *ngIf="isContentEdiatable">
+      <label>Content:</label>
+      <input type="text" class="form-control" formControlName="CONTENT" placeholder="Content" >
+    </div>
+    <div>
+      <mat-radio-group formControlName="ISAUTHORRECOMMENDED"  name="authorRecommended">
+        <label>Featured :</label>
+        <mat-radio-button [value]="true" name="authorRecommended">Yes</mat-radio-button>
+        <mat-radio-button [value]="false" name="authorRecommended">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
+
+    <div>
+      <mat-radio-group formControlName="ACTIVATIONSTATUS"  name="activatoinStatus">
+        <label>Activation Status :</label>
+        <mat-radio-button [value]="true">Active</mat-radio-button>
+        <mat-radio-button [value]="false">Inactive</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <div>
+      <mat-radio-group formControlName="ISPUBLISHED"  name="ISPUBLISHED">
+        <label>Publish :</label>
+        <mat-radio-button [value]="true">Yes</mat-radio-button>
+        <mat-radio-button [value]="false">No</mat-radio-button>
+      </mat-radio-group>
+    </div>
+    <button type="submit" class="btn btn-primary" [disabled]="!contactForm.valid" >Submit</button>
+    <button type="reset" class="btn btn-danger">Clear</button>
+    <button type="button" class="btn btn-primary"  [routerLink]="['/managePosts']">Go to Manageposts</button>
+  </form>
+
+
+  
+
+  <!-- <div class="col-md-4 " style="margin: 10rem 5rem;">
+    <mat-card class="example-card">
+          
+        <img mat-card-image  [src]="imageSrc" alt="Photo of a Shiba Inu">
+       <img [src]="profileUrl | async" /> 
+      {{profileUrl}} 
+        <mat-card-title>
+          {{title}}
+          </mat-card-title>
+        
+        <mat-card-actions>
+          <button mat-button>LIKE</button>
+          <button mat-button>SHARE</button>
+        </mat-card-actions>
+      </mat-card>
+  </div> -->
+
+  <div class="col-md-4" style="margin: 10rem 5rem;cursor: pointer;">
+    <div class="post">
+      <a class="post-img"><img [src]="imageSrc" alt="IMAGE FOR POST"></a>
+      <div class="post-body">
+        <div class="post-meta">
+          <a class="post-category cat-2"> {{(postPreview | async)?.CATEGORY}}</a>
+          <span class="post-date">March 27, 2018</span>
+        </div>
+        <h3 class="post-title"><a> {{title}}</a></h3>
+      </div>
+    </div>
+  </div>
+</div>
+
+
+<h2>The Post will be shown as :</h2>
+<div class="post-container" [innerHTML]="(postPreview | async)?.CONTENT | sanitizeHtml"></div>

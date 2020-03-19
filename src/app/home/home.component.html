@@ -1,0 +1,144 @@
+
+<div class="section">
+    <!-- container -->
+    <div class="container">
+
+        <div  [routerLink]="['post',trend.TITLE]">	
+            <div class="col-md-12">
+                <div class=" text-center text-link">
+                    <div class="trend-heading">{{trend.TITLE}}</div>
+                </div>
+            </div>
+            
+            <div class="col-md-12 card-hover">
+                <img [src]="trend.IMAGEPATH" class="imgResponsive" alt="covid">
+            </div>
+  
+        </div>
+
+        <!-- row -->
+        <div class="row">	
+            <div class="col-md-12">
+                <div class="section-title text-center">
+                    <h2>Recent Posts</h2>
+                </div>
+            </div>
+            <!-- post -->
+            <div class="col-md-6"  *ngFor="let post of recents;"  [routerLink]="['post',post.TITLE]">
+                <div class="post post-thumb card-hover">
+                    <div class="post-img " ><img class="recentPostImg" [src]="post.IMAGEPATH" alt=""></div>
+                    <div class="post-body">
+                        <div class="post-meta">
+                            <a class="post-category cat-2" >{{post.CATEGORY}}</a>
+                            <span class="post-date">{{post.CREATEDDATE.toDate() | date :'longDate'}}</span>
+                        </div>
+                        <h3 class="post-title"><a >{{post.TITLE}}</a></h3>
+                    </div>
+                </div>
+            </div>
+            <!-- /post -->
+  
+        </div>
+        
+  
+        
+  <!-- section -->
+  <div class="section section-grey">
+    <!-- container -->
+    <div class="container">
+        <!-- row -->
+        <div class="row">
+                <div class="col-md-12">
+                    <div class="section-title text-center">
+                        <h2>Featured</h2>
+                    </div>
+                </div>
+
+                <!-- post -->
+                
+             <div class="col-md-4" *ngFor="let scrum of featured" [routerLink]="['post',scrum.TITLE]">
+                   <div class="post card-hover">
+                        <a class="post-img "><img class="AuthorRecommended" [src]="scrum.IMAGEPATH" alt=""></a>
+                        <div class="post-body">
+                            <div class="post-meta">
+                                <a class="post-category cat-2" href="category.html">{{scrum.CATEGORY}}</a>
+                                <span class="post-date">{{scrum.CREATEDDATE.toDate() | date :'longDate'}}</span>
+                            </div>
+                            <h3 class="post-title"><a>{{scrum.TITLE}}</a></h3>
+                        </div>
+                    </div>
+             
+              </div>
+            </div>
+        </div>
+    </div>
+                
+    
+    
+  
+  
+        <!-- row -->
+        <div class="section row groupCategories">
+            <div class="col-md-4">
+                <!-- post widget -->
+                <div class="aside-widget">
+                        
+                                <div class="section-title text-center">
+                                    <h2 [routerLink]="['/searchList','Lifestyle']">Lifestyle</h2>
+                                </div>
+                          
+  
+                    <div class="post post-widget" *ngFor="let scrums of SCRUM;" [routerLink]="['post',scrums.TITLE]">
+                        <a class="post-img card-hover"><img [src]="scrums.IMAGEPATH" alt=""></a>
+                        <div class="post-body text-link">
+                            <h3 ><a>{{scrums.TITLE}}</a></h3>
+                        </div>
+                    </div>
+  
+                    
+                </div>
+                <!-- /post widget -->
+            </div>
+                <div class="col-md-4">
+                <!-- post widget -->
+                <div class="section-title text-center">
+                        <h2 [routerLink]="['/searchList','Health']">Health</h2>
+                    </div>
+                <div class="aside-widget">
+                    
+  
+                    <div class="post post-widget" *ngFor="let scrum of KANBAN" [routerLink]="['post','scrum.TITLE']"     >
+                        <a class="post-img" ><img [src]="scrum.IMAGEPATH" alt=""></a>
+                        <div class="post-body text-link">
+                            <h3><a>{{scrum.TITLE}}</a></h3>
+                        </div>
+                    </div>
+  
+                </div>
+                <!-- /post widget -->
+            </div>
+            <div class="col-md-4">
+                <!-- post widget -->
+                    <div class="section-title text-center">
+                            <h2 [routerLink]="['/searchList','COVID-19']" >COVID-19</h2>
+                        </div>
+                    <div class="aside-widget">
+                        
+    
+                        <div class="post post-widget" *ngFor="let scrum of XP" [routerLink]="['post',scrum.TITLE]" >
+                            <a class="post-img" ><img [src]="scrum.IMAGEPATH" alt=""></a>
+                            <div class="post-body text-link">
+                                <h3 ><a>{{scrum.TITLE}}</a></h3>
+                            </div>
+                        </div>
+                    </div>
+                <!-- /post widget -->
+            </div>   
+        </div>
+        
+    </div>
+</div>
+        <!-- /row -->
+  
+    <!-- /container -->
+ 

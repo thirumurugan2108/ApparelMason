@@ -1,0 +1,10 @@
+table{
+    width: 80%;
+    margin: auto;
+}
+
+.filterNewpost{
+    display: flex;
+    align-items: center;
+    justify-content: space-around
+}

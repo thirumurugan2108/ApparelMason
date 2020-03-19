@@ -1,0 +1,51 @@
+
+  
+  mat-card-content{
+    line-height: 1.4;
+    letter-spacing: 1px;
+  }
+
+  .container{
+  display: flex;
+  justify-content: space-around;
+  flex-wrap: wrap;
+  }
+
+  .underLine{
+    text-decoration: underline;
+  }
+  .trend-heading{
+    font-size: 26px;
+    margin: 12px 0;
+    font-family: 'Nunito Sans', sans-serif;
+    font-weight: 700;
+  }
+  .card-hover:hover {
+    top: -3px;
+    box-shadow: 0 10px 20px rgba(0,0,0,0.2);
+    cursor: pointer;
+  }
+
+  .text-link:hover{
+    text-decoration: underline;
+    cursor: pointer;
+  }
+
+  .recentPostImg{
+    height: 350px;
+  }
+
+  .AuthorRecommended{
+    height: 200px;
+  }
+
+  .groupCategories{
+    width: 100%;
+  }
+
+  .imgResponsive{
+    display: block;
+    max-width: 100%;
+    height: 100px;
+    margin: auto;
+  }
