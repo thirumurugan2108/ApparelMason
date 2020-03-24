@@ -1,0 +1,148 @@
+<div class="row">
+    <form class="col-md-4" [formGroup]="contactForm" (ngSubmit)="saveRecords()" style="margin: 3.5rem 10rem;">
+
+        <div class="form-group">
+            <label for="exampleInputEmail1">OverAllIndiaCases :</label>
+            <input type="number" class="form-control" formControlName="OverAllIndiaCases" placeholder="Enter Category">
+        </div>
+
+        <div class="form-group">
+            <label for="subCategoryInput">OverAllIndiaDeaths:</label>
+            <input type="number" class="form-control" formControlName="OverAllIndiaDeaths"
+                placeholder="Enter SubCategory">
+        </div>
+
+        <div class="form-group">
+            <label>OverAllIndiaRecovered:</label>
+            <input type="number" formControlName="OverAllIndiaRecovered" class="form-control"
+                placeholder="OverAllIndiaRecovered" />
+        </div>
+
+        <div class="form-group">
+            <label>TotalCases:</label>
+            <input type="number" formControlName="TotalCases" class="form-control" placeholder="TotalCases" />
+        </div>
+
+        <div class="form-group">
+            <label>TotalDeaths:</label>
+            <input type="number" formControlName="TotalDeaths" class="form-control" placeholder="TotalsDeaths" />
+        </div>
+
+        <div class="form-group">
+            <label>TodaysIndiaCases:</label>
+            <input type="number" formControlName="TodaysIndiaCases" class="form-control"
+                placeholder="TodaysIndiaCases" />
+        </div>
+
+        <div class="form-group">
+            <label>TodaysIndiaDeaths:</label>
+            <input type="number" formControlName="TodaysIndiaDeaths" class="form-control"
+                placeholder="TodaysIndiaDeaths" />
+        </div>
+
+        <div class="form-group">
+            <label>TodaysWorldCases:</label>
+            <input type="number" formControlName="TodaysWorldCases" class="form-control"
+                placeholder="TodaysWorldCases" />
+        </div>
+
+        <div class="form-group">
+            <label>TodaysWorldDeaths:</label>
+            <input type="number" formControlName="TodaysWorldDeaths" class="form-control"
+                placeholder="TodaysWorldDeaths" />
+        </div>
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Clear</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/managePosts']">Go to Manageposts</button>
+    </form>
+
+
+
+
+    <form class="col-md-4" [formGroup]="chartForm1" (ngSubmit)="saveChart1()" style="margin: 3.5rem 10rem;">
+        <h1>Chart 1</h1>
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker" formControlName="dateChart1">
+            <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+            <mat-datepicker #picker></mat-datepicker>
+        </mat-form-field>
+
+        <div class="form-group">
+            <label>Count :</label>
+            <input type="number" class="form-control" formControlName="countChart1" placeholder="Enter Category">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Clear</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/managePosts']">Go to Manageposts</button>
+    </form>
+
+    <form class="col-md-4" [formGroup]="chartForm2" (ngSubmit)="saveChart2()" style="margin: 3.5rem 10rem;">
+        <h1>Chart 2</h1>
+        <mat-form-field>
+            <mat-label>Choose a date</mat-label>
+            <input matInput [matDatepicker]="picker1" formControlName="dateChart2">
+            <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+            <mat-datepicker #picker1></mat-datepicker>
+        </mat-form-field>
+
+        <div class="form-group">
+            <label>Count :</label>
+            <input type="number" class="form-control" formControlName="countChart2" placeholder="Enter Category">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Clear</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/managePosts']">Go to Manageposts</button>
+    </form>
+
+
+    <form class="col-md-4" [formGroup]="tableForm" (ngSubmit)="saveTable()" style="margin: 3.5rem 10rem;">
+        <h1>Table Statistics</h1>
+        <div class="form-group">
+            <mat-form-field>
+                <mat-label>Select State</mat-label>
+                <mat-select formControlName="states">
+                    <mat-option>--</mat-option>
+                    <mat-option *ngFor="let animal of (categoryList )" [value]="animal">
+                        {{animal}}
+                    </mat-option>
+                </mat-select>
+                <!-- <mat-error *ngIf="category.hasError('required')">Please choose a Category</mat-error> -->
+            </mat-form-field>
+        </div>
+
+        
+
+        <div class="form-group">
+            <label>Total Case :</label>
+            <input type="number" class="form-control" formControlName="totalCase" placeholder="Enter totalCase">
+        </div>
+
+        <div class="form-group">
+            <label>New Case :</label>
+            <input type="number" class="form-control" formControlName="newCase" placeholder="Enter newCase">
+        </div>
+
+        <div class="form-group">
+            <label>Total Death :</label>
+            <input type="number" class="form-control" formControlName="totalDeath" placeholder="Enter totalDeath">
+        </div>
+
+        <div class="form-group">
+            <label>New Death :</label>
+            <input type="number" class="form-control" formControlName="newDeath" placeholder="Enter newDeath">
+        </div>
+
+
+
+        <button type="submit" class="btn btn-primary">Submit</button>
+        <button type="reset" class="btn btn-danger">Clear</button>
+        <button type="button" class="btn btn-primary" [routerLink]="['/managePosts']">Go to Manageposts</button>
+    </form>

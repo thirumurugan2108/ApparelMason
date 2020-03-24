@@ -8,6 +8,8 @@ import { ManagePostsComponent } from './manage-posts/manage-posts.component';
 import { SearchListComponent} from './search-list/search-list.component';
 import { authGaurd } from './auth/authGaurd.service';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { TrendComponent } from './trend/trend.component';
+import { CovidConsoleComponent } from './covid-console/covid-console.component';
 
 
 const routes: Routes = [
@@ -26,10 +28,17 @@ const routes: Routes = [
     component: SearchListComponent
   },
   {
+    path: 'covidConsole', component: CovidConsoleComponent,
+    canActivate : [authGaurd] 
+  },
+  {
     path: '', component: HomeComponent
   },
   {
     path: 'aboutUs', component: AboutUsComponent
+  },
+  {
+    path: 'COVID19', component: TrendComponent 
   },
   {
     path: 'post/:title', component: PostComponent

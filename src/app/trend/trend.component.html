@@ -1,0 +1,109 @@
+
+
+<div class="coronocount">
+    <div class="cases">
+        <h2 class="time">India Coronavirus Cases :</h2>
+        <h1>{{overAllPanel.OverAllIndiaCases}}</h1>
+        <!-- <a style="color:green;">View By country</a> -->
+        </div>
+    <div class="death">
+        <h2 class="time">
+            Deaths:
+        </h2>
+        <h1>
+            {{overAllPanel.OverAllIndiaDeaths}}
+        </h1>
+    </div>
+    <div class="Recovered">
+        <h2 class="time">
+            Recovered:
+        </h2>
+        <h1>{{overAllPanel.OverAllIndiaRecovered}}</h1>
+    </div>
+        
+    
+</div>
+
+<div class="recordPanel">
+    <div class="worldRecords">
+        <h3 style="margin: 20px 0;">WORLD CASES</h3>
+    </div>
+    <div style="padding: 15px;">
+    <div class="firstrow">
+        <span><h1 style="margin:0p">{{overAllPanel?.TodaysWorldCases}}</h1></span>
+        <span>Total  Cases</span>
+    </div>
+    <div class="secondRow">
+        <div>
+            <span class="redCount" style="font-weight: 700; font-style: 40px; color:slateblue;"><h1 style="margin:0px!important; color:slateblue;">{{overAllPanel?.TotalCases}}</h1></span>
+            <span>Today's Cases</span>
+        </div>
+        <div>
+            <span class="redCount"><h1 style="color:red; margin:0px!important;">{{overAllPanel?.TotalDeaths}}</h1></span>
+            <span>Today's Deaths</span>
+        </div>
+    </div>
+    <div class="thirdRow">
+        <div>
+            <span><h1 style="margin:0px!important;">{{overAllPanel?.TodaysWorldDeaths}}</h1></span>
+            <span>Total  Deaths</span>
+        </div>
+    </div>
+</div>
+</div>
+
+<h2 class="time">India Coronavirus Cases :</h2>
+<div class="chart-container">
+    <canvas baseChart [datasets]="barChartData" [labels]="barChartLabels" [options]="barChartOptions"
+        [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+</div>
+
+<h2 class="time">India Coronavirus Deaths :</h2>
+<div class="chart-container">
+    <canvas baseChart [datasets]="barChart2Data" [labels]="barChart2Labels" [options]="barChartOptions2"
+        [plugins]="barChartPlugins" [legend]="barChartLegend" [chartType]="barChartType">
+    </canvas>
+</div>
+
+<h2 class="time">India Coronavirus reports :</h2>
+<div class="recordTable">
+<table mat-table [dataSource]="dataSource" class="mat-elevation-z8">
+
+    <!--- Note that these columns can be defined in any order.
+          The actual rendered columns are set as a property on the row definition" -->
+  
+    <!-- Position Column -->
+    <ng-container matColumnDef="States">
+      <th mat-header-cell *matHeaderCellDef> States </th>
+      <td mat-cell *matCellDef="let element"> {{element.states}} </td>
+    </ng-container>
+  
+    <!-- Name Column -->
+    <ng-container matColumnDef="Total Cases">
+      <th mat-header-cell *matHeaderCellDef> Total Cases </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalCase}} </td>
+    </ng-container>
+  
+    <!-- Weight Column -->
+    <ng-container matColumnDef="New Cases">
+      <th mat-header-cell *matHeaderCellDef> New Cases </th>
+      <td mat-cell *matCellDef="let element" > {{element.newCase}} </td>
+    </ng-container>
+  
+    <!-- Symbol Column -->
+    <ng-container matColumnDef="Total Deaths">
+      <th mat-header-cell *matHeaderCellDef> Total Deaths </th>
+      <td mat-cell *matCellDef="let element"> {{element.totalDeath}} </td>
+    </ng-container>
+
+    <ng-container matColumnDef="New Deaths">
+        <th mat-header-cell *matHeaderCellDef> New Deaths </th>
+        <td mat-cell *matCellDef="let element"> {{element.newDeath}} </td>
+      </ng-container>
+  
+    <tr mat-header-row *matHeaderRowDef="displayedColumns;sticky: true;"></tr>
+    <tr mat-row *matRowDef="let row; columns: displayedColumns;"></tr>
+  </table>
+
+</div>

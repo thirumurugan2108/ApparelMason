@@ -7,6 +7,10 @@ import { FormControl, Validators, FormGroup, FormBuilder } from '@angular/forms'
 import { ActivatedRoute, Params, Router } from '@angular/router';
 import { Post } from '../shared/postModel';
 import * as firebase from 'firebase';
+import {
+  ToolbarService,
+  LinkService, ImageService, HtmlEditorService, TableService, QuickToolbarService
+} from '@syncfusion/ej2-angular-richtexteditor';
 
 interface CategoryList {
   CATEGORYLIST: string[];
@@ -17,7 +21,8 @@ interface CategoryList {
 @Component({
   selector: 'app-admin',
   templateUrl: './admin.component.html',
-  styleUrls: ['./admin.component.css']
+  styleUrls: ['./admin.component.css'],
+
 })
 
 
@@ -30,7 +35,18 @@ export class AdminComponent implements OnInit {
   isNewCategory = false;
   isNewSubCategory = false;
   title: string;
-  // content: string;
+  content = `
+  <p>The RichTextEditor triggers events based on its actions. </p>
+                      <p> The events can be used as an extension point to perform custom operations.</p>
+                      <ul>
+                          <li>created - Triggers when the component is rendered.</li>
+                          <li>change - Triggers only when RTE is blurred and changes are done to the content.</li>
+                          <li>focus - Triggers when RTE is focused in.</li>
+                          <li>blur - Triggers when RTE is focused out.</li>
+                          <li>actionBegin - Triggers before command execution using toolbar items or executeCommand method.</li>
+                          <li>actionComplete - Triggers after command execution using toolbar items or executeCommand method.</li>
+                          <li>destroyed – Triggers when the component is destroyed.</li>
+                      </ul>`;
   isAuthorRecommended = false;
   isActive = false;
   isPublished = false;
@@ -48,13 +64,28 @@ export class AdminComponent implements OnInit {
   contactForm: FormGroup;
   post: Post = new Post();
   isImageLoaded = false;
+
+  public tools: object = {
+    items: ['Undo', 'Redo', '|',
+      'Bold', 'Italic', 'Underline', 'StrikeThrough', '|',
+      'FontName', 'FontSize', 'FontColor', 'BackgroundColor', '|',
+      'SubScript', 'SuperScript', '|',
+      'LowerCase', 'UpperCase', '|',
+      'Formats', 'Alignments', '|', 'OrderedList', 'UnorderedList', '|',
+      'Indent', 'Outdent', '|', 'CreateLink', 'CreateTable',
+      'Image', '|', 'ClearFormat', 'Print', 'SourceCode', '|', 'FullScreen']
+  };
+  public quickTools: object = {
+    image: [
+      'Replace', 'Align', 'Caption', 'Remove', 'InsertLink', '-', 'Display', 'AltText', 'Dimension']
+  };
   // reactPost = new Post();
   constructor(private storage: AngularFireStorage,
-    private afs: AngularFirestore,
-    private route: ActivatedRoute,
-    private router: Router, private formBuilder: FormBuilder) {
+              private afs: AngularFirestore,
+              private route: ActivatedRoute,
+              private router: Router,
+              private formBuilder: FormBuilder) {
     this.contactForm = this.createFormGroup(formBuilder);
-
   }
 
   createFormGroup(formBuilder: FormBuilder) {
@@ -138,7 +169,7 @@ export class AdminComponent implements OnInit {
   savePost1() {
     this.afs.doc('posts/IYbztZhEvlU4gF23jgox/otherDetails/content').set(
       {
-        CONTENT: 'this.contactForm.controls[.value'
+        CONTENT: this.contactForm.controls['CONTENT'].value
       }
     );
   }
@@ -246,12 +277,12 @@ export class AdminComponent implements OnInit {
       // this.categoryList.push(this.contactForm.get('CATEGORY').value);
       // this.afs.doc('CATEGORIES/LIST').update({ CATEGORYLIST: this.categoryList });
       this.afs.doc('CATEGORIES/LIST')
-      .update({ CATEGORYLIST: firebase.firestore.FieldValue.arrayUnion(this.contactForm.get('CATEGORY').value) });
+        .update({ CATEGORYLIST: firebase.firestore.FieldValue.arrayUnion(this.contactForm.get('CATEGORY').value) });
     }
     if (this.isNewSubCategory) {
       // this.SUBCATEGORYLIST.push(this.contactForm.get('SUBCATEGORY').value);
       this.afs.doc('CATEGORIES/LIST')
-      .update({ SUBCATEGORYLIST: firebase.firestore.FieldValue.arrayUnion(this.contactForm.get('SUBCATEGORY').value) });
+        .update({ SUBCATEGORYLIST: firebase.firestore.FieldValue.arrayUnion(this.contactForm.get('SUBCATEGORY').value) });
     }
   }
 

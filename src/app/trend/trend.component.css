@@ -1,0 +1,166 @@
+.chartPanel {
+    /* width: 50%;
+    position: relative;
+    margin: auto; */
+    display: flex;
+    /* justify-content: center; */
+    width: 50%;
+    margin: auto;
+}
+
+@media (max-width: 768px) {
+    /* .chartPanel{
+    display: flex;
+    width: 95%;
+    margin: auto;
+    height: 80%;
+    } */
+}
+
+/* 
+canvas{
+    height: 80% !important;
+}
+
+.chartPanel{
+    height: 80%;
+}
+
+.chart-container {
+    position: relative;
+    margin: auto;
+    height: 80vh;
+    width: 80vw;
+  } */
+
+canvas {
+    border: 1px dotted red;
+}
+
+.chart-container {
+    position: relative;
+    margin: 6rem auto;
+    height: 80vh;
+    width: 80vw;
+}
+
+.firstrow, .thirdRow {
+    text-align: center;
+    font-weight: bold;
+    font-size: 24px;
+}
+
+.secondRow {
+    display: flex;
+    width: 100%;
+    justify-content: space-between;
+    text-align: center;
+    font-size: 20px;
+}
+
+span {
+    display: block;
+}
+
+.recordPanel {
+    border: 1px solid black;
+}
+
+.recordPanel {
+    max-width: 480px;
+    margin: 40px auto;
+    /* padding: 15px; */
+    border: 1px solid lightgray;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-around;
+}
+
+.redCount {
+    color: red;
+    font-weight: bold;
+}
+
+th {
+    word-wrap: break-word;
+}
+
+.recordTable {
+    width: 95%;
+    margin:15px  auto;
+    text-align: center;
+}
+
+.mat-column-States {
+    word-wrap: break-word;
+    text-align: left;
+}
+
+.mat-header-cell {
+    text-align: center;
+    font-size: 1.5rem;
+}
+
+.mat-column-New-Cases {
+    word-wrap: break-word;
+    background-color: #FFEEAA;
+}
+
+.mat-table {
+    width: 100%;
+}
+
+.mat-column-New-Deaths {
+    background-color: red;
+    color: white;
+    font-weight: bold;
+}
+
+td.mat-cell:last-of-type, td.mat-footer-cell:last-of-type, th.mat-header-cell:last-of-type {
+    padding-right: 0px;
+}
+
+.coronocount {
+    text-align: center !important;
+    padding: 20px!important;
+}
+
+.cases h1 {
+    font-weight: 800 !important;
+    font-size: 60px !important;
+    color: #bcbaba !important;
+    padding: 5px;
+}
+
+.death h1 {
+    font-weight: 800!important;
+    font-size: 60px!important;
+    color: Grey!important;
+    padding: 5px;
+}
+
+.Recovered h1 {
+    font-weight: 800 !important;
+    font-size: 60px !important;
+    color: #8ACA2B!important;
+    padding: 5px;
+}
+
+.coronocount.cases a {
+    color: #1ec21e!important;
+}
+
+.time {
+    font-family: 'Roboto Condensed', sans-serif;
+    font-weight: 300!important;
+    font-size: 30px!important;
+    color: #555!important;
+    margin: 0!important;
+    text-align: center;
+}
+
+.worldRecords {
+    border-bottom: 1px solid lightgrey;
+    text-align: center;
+    background-color: #eee;
+}

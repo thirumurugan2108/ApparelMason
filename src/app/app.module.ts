@@ -10,7 +10,11 @@ import { AngularFireModule } from '@angular/fire';
 import { AngularFireStorageModule, StorageBucket } from '@angular/fire/storage';
 import { AppComponent } from './app.component';
 import { HomeComponent } from './home/home.component';
+import { AngularFireAnalyticsModule, ScreenTrackingService } from '@angular/fire/analytics';
+import { RichTextEditorAllModule } from '@syncfusion/ej2-angular-richtexteditor';
+import { DatePipe } from '@angular/common';
 
+import {MatNativeDateModule, MatRippleModule} from '@angular/material/core';
 import {MatDatepickerModule} from '@angular/material/datepicker';
 import {MatRadioModule} from '@angular/material/radio';
 import {MatInputModule} from '@angular/material/input';
@@ -20,7 +24,7 @@ import {MatSelectModule} from '@angular/material/select';
 import {MatSidenavModule} from '@angular/material/sidenav';
 import {MatSortModule} from '@angular/material/sort';
 import {MatTableModule} from '@angular/material/table';
-
+import { ChartsModule } from 'ng2-charts';
 
 import { SanitizeHtmlPipe } from './shared/pipe/SanitizeHtmlPipe ';
 import { LoadingSpinnerComponent } from './shared/loading-spinner/loading-spinnerComponent';
@@ -36,6 +40,10 @@ import { NavBarComponent } from './nav-bar/nav-bar.component';
 import { HeaderComponent } from './header/header.component';
 import { FooterComponent } from './footer/footer.component';
 import { AboutUsComponent } from './about-us/about-us.component';
+import { TrendComponent } from './trend/trend.component';
+import { CovidConsoleComponent } from './covid-console/covid-console.component';
+
+
 @NgModule({
   declarations: [
     AppComponent,
@@ -50,7 +58,9 @@ import { AboutUsComponent } from './about-us/about-us.component';
     authComponent,
     ManagePostsComponent,
     SearchListComponent,
-    AboutUsComponent
+    AboutUsComponent,
+    TrendComponent,
+    CovidConsoleComponent
   ],
   imports: [
     BrowserModule,
@@ -66,15 +76,21 @@ import { AboutUsComponent } from './about-us/about-us.component';
     MatSelectModule,
     MatSidenavModule,
     MatSortModule,
+    MatDatepickerModule,
+    MatRippleModule,
     MatTableModule,
+    ChartsModule,
+    MatNativeDateModule,
+    RichTextEditorAllModule,
     AngularFireModule.initializeApp(environment.firebaseConfig),
         AngularFireDatabaseModule,
         AngularFireStorageModule,
         AngularFirestoreModule,
+        AngularFireAnalyticsModule,
         MatDatepickerModule
   ],
-  providers: [AngularFirestore,
-    { provide: StorageBucket, useValue: 'gs://apparel-mason.appspot.com' },
+  providers: [AngularFirestore,ScreenTrackingService, DatePipe,
+    { provide: StorageBucket, useValue: 'gs://agile-a73aa.appspot.com' },
     {provide : HTTP_INTERCEPTORS , useClass : AuthInterceptorservice , multi: true }],
   bootstrap: [AppComponent]
 })

@@ -58,7 +58,8 @@
     <button  class="btn btn-primary" *ngIf="!isContentEdiatable" (click)="getContentForEdit()">EditContent</button>
     <div class="form-group" *ngIf="isContentEdiatable">
       <label>Content:</label>
-      <input type="text" class="form-control" formControlName="CONTENT" placeholder="Content" >
+      <ejs-richtexteditor id='defaultRTE'  class="form-control" formControlName="CONTENT" [(value)]='content' [toolbarSettings]='tools' [quickToolbarSettings]='quickTools'></ejs-richtexteditor>
+      <!-- <input type="text" class="form-control" formControlName="CONTENT" placeholder="Content" > -->
     </div>
     <div>
       <mat-radio-group formControlName="ISAUTHORRECOMMENDED"  name="authorRecommended">
@@ -124,3 +125,5 @@
 
 <h2>The Post will be shown as :</h2>
 <div class="post-container" [innerHTML]="(postPreview | async)?.CONTENT | sanitizeHtml"></div>
+
+<!-- <ejs-richtexteditor id='defaultRTE' [(value)]='content' [toolbarSettings]='tools' [quickToolbarSettings]='quickTools'></ejs-richtexteditor> -->
